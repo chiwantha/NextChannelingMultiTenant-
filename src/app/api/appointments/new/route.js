@@ -70,7 +70,7 @@ export const POST = async (request) => {
     loadAndSendAppointment(res.insertId, whatsapp_send);
     return NextResponse.json({ data: res }, { status: 200 });
   } catch (err) {
-    console.error("DB Error:", err);
+    console.error("Appointment Insert Error:", err);
     return NextResponse.json(
       { error: "Internal Server Error!" },
       { status: 500 }
@@ -157,6 +157,6 @@ const loadAndSendAppointment = async (appointment_id, to) => {
 
   const message = lines.join("\n");
 
-  sendWhatsappMessage(`761294262`, message);
+  sendWhatsappMessage(to, message);
   return;
 };

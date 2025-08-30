@@ -1,4 +1,4 @@
-import Button from "@/components/buttons/button/Button";
+import Button from "@/components/shared/buttons/button/Button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 const SubmitSuccessfull = () => {

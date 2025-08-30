@@ -95,7 +95,7 @@ const HowToUsePage = () => {
             </header>
 
             {/* Introduction */}
-            <section className="bg-white p-4 rounded-lg shadow-md">
+            <section className="bg-slate-200 p-4 rounded-lg shadow-md">
               <h2 className="text-xl font-semibold text-gray-700 mb-3">
                 Easy Online Doctor Booking
               </h2>
@@ -115,7 +115,8 @@ const HowToUsePage = () => {
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
                 {channelingSteps.map((step, index) => (
                   <article
-                    className="w-full rounded-lg overflow-hidden shadow-md border-2 border-gray-100 bg-white"
+                    className="w-full rounded-lg overflow-hidden shadow-md border-2 hover:border-[#0560D9] transition-all duration-400
+                     border-gray-200 bg-white hover:bg-gradient-to-tr from-slate-100  to-blue-50"
                     key={index}
                     itemScope
                     itemType="https://schema.org/HowToStep"
@@ -138,12 +139,12 @@ const HowToUsePage = () => {
                         className="font-bold tracking-tight text-xl uppercase"
                         itemProp="name"
                       >
-                        Step {index + 1}: {step.title}
+                        Step {index + 1} : {step.title}
                       </h3>
 
                       <hr className="w-full border-gray-200" />
 
-                      <p className="text-[17px] text-slate-600" itemProp="text">
+                      <p className=" text-slate-600" itemProp="text">
                         {step.description}
                       </p>
 
@@ -198,7 +199,7 @@ const HowToUsePage = () => {
           </main>
 
           {/* Sidebar */}
-          <aside className="p-4 md:col-span-1  bg-slate-100 rounded-lg">
+          <aside className=" md:col-span-1   rounded-lg">
             <div className="sticky top-4">
               <h2 className="text-lg font-semibold text-gray-700 mb-4">
                 Quick Tips
@@ -220,7 +221,7 @@ const HowToUsePage = () => {
                     New sessions are added daily, check regularly
                   </p>
                 </div>
-                <div className="bg-white p-3 rounded-lg shadow-sm">
+                <div className="bg-white p-3 hidden rounded-lg shadow-sm">
                   <h3 className="font-medium text-blue-600 mb-1">💳 Payment</h3>
                   <p className="text-sm text-gray-600">
                     Multiple payment options available

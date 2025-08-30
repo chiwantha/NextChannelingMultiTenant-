@@ -1,6 +1,6 @@
-import InstructionsCard from "@/components/cards/instructionCard/InstructuonsCard";
-import ProfileCard from "@/components/cards/profileCard/ProfileCard";
-import SessionBar from "@/components/cards/sessionBar/SessionBar";
+import InstructionsCard from "@/components/user/cards/instructionCard/InstructuonsCard";
+import ProfileCard from "@/components/user/cards/profileCard/ProfileCard";
+import SessionBar from "@/components/user/cards/sessionBar/SessionBar";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;

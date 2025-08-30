@@ -1,4 +1,4 @@
-import LoadingBlock from "@/components/action/loading/LoadingBlock";
+import LoadingBlock from "@/components/shared/action/loading/LoadingBlock";
 
 const LoadingPage = () => {
   return <LoadingBlock />;

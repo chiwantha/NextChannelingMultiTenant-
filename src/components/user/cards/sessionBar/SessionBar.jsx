@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/components/buttons/button/Button";
-import ChannelForm from "@/components/form/ChannelForm";
+import Button from "@/components/shared/buttons/button/Button";
+import ChannelForm from "@/components/user/form/ChannelForm";
 import { motion } from "framer-motion";
 import { useState } from "react";
 

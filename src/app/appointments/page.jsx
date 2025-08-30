@@ -1,6 +1,6 @@
-import Button from "@/components/buttons/button/Button";
-import AppointmentCard from "@/components/cards/appointmentCard/AppointmentCard";
-import AppointmentSearch from "@/components/search/appointmentSearch/AppointmentSearch";
+import Button from "@/components/shared/buttons/button/Button";
+import AppointmentCard from "@/components/shared/cards/appointmentCard/AppointmentCard";
+import AppointmentSearch from "@/components/user/search/appointmentSearch/AppointmentSearch";
 import { Suspense } from "react";
 
 export const generateMetadata = () => {

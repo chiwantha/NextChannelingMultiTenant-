@@ -1,5 +1,5 @@
-import IconButton from "@/components/buttons/iconbutton/IconButton";
-import TopImageContainer from "@/components/topimagecontainer/TopImageContainer";
+import IconButton from "@/components/shared/buttons/iconbutton/IconButton";
+import TopImageContainer from "@/components/shared/topimagecontainer/TopImageContainer";
 import {
   Carousel,
   CarouselContent,

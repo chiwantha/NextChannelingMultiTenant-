@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/components/buttons/button/Button";
+import Button from "@/components/shared/buttons/button/Button";
 import { TbPrinter } from "react-icons/tb";
 import { TbPrinterOff } from "react-icons/tb";
 import { GiCheckMark } from "react-icons/gi";

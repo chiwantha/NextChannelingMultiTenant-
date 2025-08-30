@@ -6,8 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
 
 // my components
-import SubmitSuccessfull from "../action/submitSuccess/SubmitSuccessfull";
-import Button from "../buttons/button/Button";
+import SubmitSuccessfull from "../../shared/action/submitSuccess/SubmitSuccessfull";
+import Button from "../../shared/buttons/button/Button";
 
 // date time picker
 import DatePicker from "react-datepicker";

@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/components/buttons/button/Button";
+import Button from "@/components/shared/buttons/button/Button";
 import Link from "next/link";
 
 import { IoClose } from "react-icons/io5";

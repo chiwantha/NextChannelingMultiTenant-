@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Button from "../../buttons/button/Button";
+import Button from "../../../shared/buttons/button/Button";
 import { motion } from "framer-motion";
 
 const DoctorCard = ({ id, name, specialization, img, gender, slug, index }) => {

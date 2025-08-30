@@ -1,6 +1,6 @@
-import DoctorCard from "@/components/cards/doctorCard/DoctorCard";
-import Pagination from "@/components/pagination/Pagination";
-import DocSearch from "@/components/search/doctorSearch/DocSearch";
+import DoctorCard from "@/components/user/cards/doctorCard/DoctorCard";
+import Pagination from "@/components/shared/pagination/Pagination";
+import DocSearch from "@/components/user/search/doctorSearch/DocSearch";
 import { getDocListCombo } from "@/lib/data";
 
 export const generateMetadata = async ({ searchParams }) => {

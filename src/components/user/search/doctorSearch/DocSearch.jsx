@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import Button from "@/components/buttons/button/Button";
+import Button from "@/components/shared/buttons/button/Button";
 import { Combobox } from "@/components/ui/combobox";
 import { Specialization } from "@/constant";
 import { useRouter } from "next/navigation";
@@ -83,7 +83,7 @@ const DocSearch = ({ doctorList, specializationList }) => {
         />
         <Button
           title={"Clear Filters"}
-          bg={"bg-gray-500 text-center text-white font-normal py-2 w-full"}
+          bg={"bg-red-400 text-center text-white font-normal py-2 w-full"}
           click={handleClear}
         />
       </div>
