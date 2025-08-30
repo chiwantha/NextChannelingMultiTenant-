@@ -1,6 +1,7 @@
 import Button from "@/components/buttons/button/Button";
 import AppointmentCard from "@/components/cards/appointmentCard/AppointmentCard";
 import AppointmentSearch from "@/components/search/appointmentSearch/AppointmentSearch";
+import { Suspense } from "react";
 
 export const generateMetadata = () => {
   return {
@@ -60,7 +61,7 @@ async function getAppointments(searchQuery) {
 
 const AppointmentViewPage = async ({ searchParams }) => {
   const params = await searchParams;
-  const { phone = 0 } = params;
+  const { phone = null } = params;
   const data = await getAppointments(phone);
   const structuredData = generateStructuredData();
 
@@ -73,12 +74,9 @@ const AppointmentViewPage = async ({ searchParams }) => {
       />
 
       <div className="space-y-6">
-        {/* Added proper heading structure */}
-        <h1 className="text-2xl font-bold text-gray-900 sr-only">
-          My Appointments
-        </h1>
-
-        <AppointmentSearch />
+        <Suspense fallback={<div>Loading search component...</div>}>
+          <AppointmentSearch />
+        </Suspense>
 
         <section aria-label="Appointment list">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4">

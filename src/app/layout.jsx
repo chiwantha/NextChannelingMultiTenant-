@@ -35,6 +35,9 @@ export const metadata = {
       "Arogya Hospitals Portal - Online Doctor Channeling & Appointments",
     template: "%s | Arogya Hospitals Portal",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
   description:
     "Book doctor appointments online with Sri Lanka's best medical specialists. Arogya Hospitals online portal for easy channeling and healthcare services.",
   keywords:

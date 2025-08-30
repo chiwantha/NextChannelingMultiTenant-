@@ -198,3 +198,46 @@ export const Specialization = [
     icon: "https://cdn-icons-png.flaticon.com/512/2964/296426.png",
   },
 ];
+
+export const channelingSteps = [
+  {
+    step: 1,
+    title: "Find a Doctor",
+    description:
+      "Click the 'Channel a Doctor' button on the main menu to view the full list of available doctors.",
+    actions: ["Search by name", "Filter by specialization"],
+    image: "/sys/instruction/channeling/1.png",
+  },
+  {
+    step: 2,
+    title: "Select and Book",
+    description:
+      "After finding your doctor in the list below the search bar, click the 'Book Now' button on their card to proceed to their profile.",
+    actions: ["Choose your doctor", "Click 'Book Now'"],
+    image: "/sys/instruction/channeling/2.png",
+  },
+  {
+    step: 3,
+    title: "Choose a Date & Session",
+    description:
+      "On the doctor's profile page, you will see their full details, available sessions, and prices. Select your preferred date and time slot.",
+    actions: ["Check available sessions", "Select date & time"],
+    image: "/sys/instruction/channeling/3.png",
+  },
+  {
+    step: 4,
+    title: "Make the Appointment",
+    description:
+      "Complete the booking form with your details and submit the request. You can then track its status (e.g., Pending, Approved) on your 'My Appointments' page.",
+    actions: ["Complete patient details", "Submit booking"],
+    image: "/sys/instruction/channeling/4.png",
+  },
+  {
+    step: 5,
+    title: "Confirmation",
+    description:
+      "Please allow 15-30 minutes for the hospital to call you and officially confirm your appointment details.",
+    actions: ["Await confirmation call", "Verify appointment details"],
+    image: "/sys/instruction/channeling/5.png",
+  },
+];
