@@ -30,12 +30,12 @@ const AdminLoginPage = () => {
 
   return (
     <div className="h-screen w-full flex items-center justify-center px-4">
-      <div className="bg-slate-100 p-2 rounded-lg shadow-lg border border-gray-200">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-2">
+      <div className="bg-slate-100  rounded-lg shadow-lg border border-gray-200">
+        <div className="grid md:grid-cols-2 grid-cols-1">
           {/* Image */}
           <div
             className="md:aspect-square flex items-center
-            rounded-lg justify-center p-8 md:p-4"
+            rounded-lg justify-center p-8 md:p-6"
           >
             <img
               src={`/hospital/logo/default.png`}
@@ -45,7 +45,10 @@ const AdminLoginPage = () => {
               className="w-[250px]"
             />
           </div>
-          <div className="flex flex-col justify-center items-center bg-white rounded-lg space-y-6 p-6">
+          <div
+            className="flex flex-col justify-center items-center bg-white 
+          rounded-lg space-y-6 p-6"
+          >
             <span className="text-4xl font-bold text-[#0560D9] uppercase">
               Log-In
             </span>
@@ -81,9 +84,12 @@ const AdminLoginPage = () => {
                     router.push("/");
                   }}
                 />
-                <button type="submit" className="w-full">
-                  <Button title={"Login"} fw={true} pd={"px-4 py-2"} />
-                </button>
+                <Button
+                  title={"Login"}
+                  fw={true}
+                  pd={"px-4 py-2"}
+                  type="submit"
+                />
               </div>
             </form>
           </div>
