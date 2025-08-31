@@ -11,6 +11,8 @@ import { MdEventNote, MdAssessment } from "react-icons/md";
 import SidebarItem from "./sidebarItem/SidebarItem";
 import { useSidebar } from "@/context/SidebarContext";
 
+import { signOut } from "next-auth/react";
+
 const sideBar = [
   {
     title: "Pannel",
@@ -64,11 +66,12 @@ const sideBar = [
   },
 ];
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ name, role }) => {
   const currentUser = {
-    role: 1,
-    name: "Kasun Chiwantha",
+    role: role || 1,
+    name: name || "Kasun Chiwantha",
   };
+
   const { isSidebarOpen } = useSidebar();
   return (
     <div
@@ -94,7 +97,7 @@ const AdminSidebar = () => {
             </span>
             <span className="text-center uppercase text-xs text-slate-300 ">
               {currentUser
-                ? currentUser.role === 1
+                ? currentUser.role == 1
                   ? "Admin"
                   : "Management"
                 : "User Role"}
@@ -119,11 +122,7 @@ const AdminSidebar = () => {
             />
           ))}
         </div>
-        <div
-          onClick={() => {
-            userLogout();
-          }}
-        >
+        <div onClick={() => signOut({ callbackUrl: "/auth/adm-login" })}>
           <SidebarItem
             color={`bg-red-500 hover:bg-red-400 text-white rounded-lg
               cursor-default`}
