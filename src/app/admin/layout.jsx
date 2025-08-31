@@ -19,8 +19,8 @@ const AdminLayout = async ({ children }) => {
     <SidebarProvider>
       <Navbar />
       <div className="mx-auto px-2 max-w-7xl">
-        <div className="flex max-h-screen gap-4">
-          <div className="w-44 fixed sm:sticky top-[70px] z-40">
+        <div className="flex  gap-4">
+          <div className="w-48 fixed sm:sticky z-40">
             <AdminSidebar
               name={session?.user?.name}
               role={session?.user?.role}

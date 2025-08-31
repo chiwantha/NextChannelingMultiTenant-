@@ -16,7 +16,7 @@ import { signOut } from "next-auth/react";
 const sideBar = [
   {
     title: "Pannel",
-    link: "admin/apps",
+    link: "/admin/pannels",
     icon: <GoHomeFill />,
   },
   {
@@ -28,14 +28,19 @@ const sideBar = [
     title: "Channeling",
     submenu: [
       {
-        title: "List",
-        link: "admin/appointments",
+        title: "Appointments",
+        link: "/admin/appointments",
         icon: <MdEventNote />,
       },
       {
         title: "Removed",
-        link: "admin/removed",
+        link: "/admin/removed",
         icon: <FaTrashAlt />,
+      },
+      {
+        title: "Doctors",
+        link: "/admin/appointments",
+        icon: <MdEventNote />,
       },
     ],
   },
@@ -44,12 +49,12 @@ const sideBar = [
     submenu: [
       {
         title: "Appointments",
-        link: "admin/appointments",
+        link: "/admin/appointments",
         icon: <MdAssessment />,
       },
       {
         title: "Financial",
-        link: "admin/appointments",
+        link: "/admin/appointments",
         icon: <HiDocumentText />,
       },
     ],
@@ -69,7 +74,7 @@ const sideBar = [
 const AdminSidebar = ({ name, role }) => {
   const currentUser = {
     role: role || 1,
-    name: name || "Kasun Chiwantha",
+    name: name || "Admin",
   };
 
   const { isSidebarOpen } = useSidebar();
@@ -78,8 +83,10 @@ const AdminSidebar = ({ name, role }) => {
       className={`${
         isSidebarOpen ? "translate-x-0" : "-translate-x-80 sm:translate-x-0"
       }
-     transition-transform duration-300 overflow-y-auto max-h-screen pb-20
-     no-scrollbar`}
+     transition-transform duration-300 overflow-x-hidden
+     no-scrollbar h-[calc(100vh-105px)] overflow-y-auto
+     sm:top-[77px] top-0
+     rounded-lg  sm:sticky sm:bg-transparent`}
     >
       <div className={`flex flex-col gap-4 z-50 `}>
         {/* top part */}

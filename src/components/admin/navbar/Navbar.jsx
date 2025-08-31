@@ -1,18 +1,19 @@
-import Button from "@/components/shared/buttons/button/Button";
 import Image from "next/image";
 import Link from "next/link";
+import NavLinks from "./links/Links";
 
 const Navbar = () => {
   const logo = false;
 
   return (
     <nav
-      className="w-full py-1 shadow-md overflow-hidden"
+      className="w-full py-1 shadow-md sticky top-0 z-50 overflow-hidden
+      bg-white"
       role="navigation"
       aria-label="Main navigation"
     >
       <div
-        className="bg-white px-2 mx-auto max-w-7xl h-[45px] 
+        className="px-2 mx-auto max-w-7xl h-[45px] 
       flex items-center justify-between"
       >
         <div className="flex items-center gap-5">
@@ -32,7 +33,7 @@ const Navbar = () => {
             />
           </Link>
         </div>
-        <Button title="Hi Admin" />
+        <NavLinks />
       </div>
     </nav>
   );
