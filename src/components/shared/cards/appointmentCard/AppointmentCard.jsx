@@ -5,10 +5,15 @@ import { TbPrinterOff } from "react-icons/tb";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaXmark } from "react-icons/fa6";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toPng } from "html-to-image";
+import { toast } from "react-toastify";
+import { MdPending } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const AppointmentCard = ({ data, admin = false }) => {
+  const router = useRouter();
+  const [isPending, setIsPending] = useState(false);
   // patient info
   const { patient, contact, alternate_contact, email } = data || "";
   // session info
@@ -60,7 +65,34 @@ const AppointmentCard = ({ data, admin = false }) => {
     });
   };
 
-  const handleClick = () => {};
+  const handleClick = async (action) => {
+    try {
+      setIsPending(true);
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_URL}/api/admin/appointments`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            appointment_id: id,
+            action: action,
+          }),
+        }
+      );
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      toast.success(`Appointment ${action} successfully !`);
+      router.push(`/admin/appointments`);
+    } catch (err) {
+      console.error(`Appoinntment Update Failed ! : `, err);
+      toast.error("Appoinntment Update Failed !. Please try again.");
+      setIsPending(false);
+    } finally {
+      setIsPending(false);
+    }
+  };
 
   return (
     <div
@@ -134,7 +166,7 @@ const AppointmentCard = ({ data, admin = false }) => {
             >
               {is_confirmed ? (
                 <Button
-                  title={<FaXmark />}
+                  title={isPending ? <MdPending /> : <FaXmark />}
                   bg={"bg-red-500 hover:bg-red-600 text-white"}
                   pd={`px-3 py-2 text-lg`}
                   click={() => {
@@ -144,7 +176,7 @@ const AppointmentCard = ({ data, admin = false }) => {
               ) : (
                 <>
                   <Button
-                    title={<RiDeleteBin6Line />}
+                    title={isPending ? <MdPending /> : <RiDeleteBin6Line />}
                     bg={"bg-red-500 hover:bg-red-600 text-white"}
                     pd={"px-3 py-2 text-lg"}
                     click={() => {
@@ -152,7 +184,7 @@ const AppointmentCard = ({ data, admin = false }) => {
                     }}
                   />
                   <Button
-                    title={<GiCheckMark />}
+                    title={isPending ? <MdPending /> : <GiCheckMark />}
                     bg={"bg-[#00C950] hover:bg-green-600 text-white"}
                     pd={`px-3 py-2 text-lg`}
                     click={() => {

@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import { Geist } from "next/font/google";
 
@@ -141,7 +142,7 @@ const structuredData = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="select-none" data-scroll-behavior="smooth">
       <head>
         {/* Structured data for the entire website */}
         <script
@@ -168,6 +169,7 @@ export default function RootLayout({ children }) {
         cz-shortcut-listen="true"
       >
         {children}
+        <ToastContainer />
       </body>
     </html>
   );
