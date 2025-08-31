@@ -1,13 +1,10 @@
-import { Geist } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/user/navbar/Navbar";
-import Footer from "@/components/user/footer/Footer";
-import { ToastContainer } from "react-toastify";
+import { Geist } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap", // Better for performance and SEO
+  display: "swap",
 });
 
 // Company information for structured data
@@ -93,12 +90,6 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    // Add your verification codes here:
-    // google: 'your-google-search-console-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // me: 'your-email-address',
-  },
 };
 
 // Generate structured data for the organization and service
@@ -173,15 +164,10 @@ export default function RootLayout({ children }) {
       </head>
 
       <body
-        className={`${geistSans.variable}  antialiased scroll-smooth`}
+        className={`${geistSans.variable} antialiased scroll-smooth space-y-6`}
         cz-shortcut-listen="true"
       >
-        <div className="space-y-6">
-          <Navbar />
-          <div className="mx-auto px-2 max-w-7xl">{children}</div>
-          <Footer />
-        </div>
-        <ToastContainer />
+        {children}
       </body>
     </html>
   );
