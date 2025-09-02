@@ -140,9 +140,9 @@ const DoctorProfilePage = async ({ params }) => {
         />
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         {/* Left Sidebar */}
-        <header className="space-y-6">
+        <header className="space-y-4">
           {profile ? (
             <ProfileCard ProfileData={profile} />
           ) : (

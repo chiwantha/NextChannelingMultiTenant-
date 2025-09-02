@@ -3,7 +3,8 @@ import { Instructions } from "@/constant";
 const InstructionsCard = () => {
   return (
     <section
-      className="p-4 bg-[#0460D9] flex flex-col items-center justify-center text-center rounded-lg space-y-4"
+      className="p-4 bg-[#0460D9] flex flex-col items-center
+       justify-center text-center rounded-lg space-y-4"
       itemScope
       itemType="https://schema.org/HowTo"
     >
