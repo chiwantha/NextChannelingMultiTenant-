@@ -1,5 +1,7 @@
 import DashValueCard from "@/components/admin/cards/dashcard/DashValueCard";
 
+export const dynamic = "force-dynamic";
+
 async function getDashData() {
   try {
     const res = await fetch(
@@ -17,7 +19,7 @@ async function getDashData() {
 
 const AdminDashboard = async () => {
   const dashboard = await getDashData();
-  const data = dashboard.dashboard;
+  const data = dashboard.dashboard || null;
   return (
     <div className="flex flex-col space-y-4">
       {/* Appointment */}
