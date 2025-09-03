@@ -46,9 +46,10 @@ const Pagination = ({ prop, searchParams }) => {
         {/* Previous Button */}
         <PaginationItem>
           {page === 1 ? (
-            <span className="px-3 py-1 rounded-md border bg-gray-200 text-gray-500 cursor-not-allowed">
-              Previous
-            </span>
+            <PaginationPrevious
+              href={`#`}
+              className={`cursor-not-allowed opacity-50`}
+            />
           ) : (
             <PaginationPrevious href={createHref(page - 1)} />
           )}
@@ -90,9 +91,10 @@ const Pagination = ({ prop, searchParams }) => {
         {/* Next Button */}
         <PaginationItem>
           {page === pages ? (
-            <span className="px-3 py-1 rounded-md border bg-gray-200 text-gray-500 cursor-not-allowed">
-              Next
-            </span>
+            <PaginationNext
+              href={`#`}
+              className={`cursor-not-allowed opacity-50 `}
+            />
           ) : (
             <PaginationNext href={createHref(page + 1)} />
           )}
