@@ -26,7 +26,7 @@ const Links = () => {
   const path = usePathname();
 
   return (
-    <div className="relative">
+    <div className="relative flex items-center">
       {/* Desktop Links */}
       <div className="sm:flex hidden items-center gap-5">
         {navlinks.map((link, index) => (
