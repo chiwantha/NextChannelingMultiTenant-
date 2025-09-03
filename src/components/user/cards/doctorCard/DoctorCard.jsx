@@ -10,7 +10,7 @@ const DoctorCard = ({ id, name, specialization, img, gender, slug, index }) => {
     "@context": "https://schema.org",
     "@type": "Physician",
     "@id": `#doctor-${id}`,
-    name: `Dr. ${name}`,
+    name: `${name}`,
     medicalSpecialty: specialization,
     gender: gender,
     image: `/doctors/${img}`,
@@ -64,7 +64,7 @@ const DoctorCard = ({ id, name, specialization, img, gender, slug, index }) => {
           font-semibold text-gray-700 "
             itemProp="name"
           >
-            Dr. {name}
+            {name}
           </h3>
           <p
             className="uppercase text-xs sm:text-sm text-gray-500 tracking-wide"
