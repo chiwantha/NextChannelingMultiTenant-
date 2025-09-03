@@ -1,5 +1,13 @@
 "use client";
-import Link from "next/link";
+import {
+  Pagination as ShadcnPagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
 
 const Pagination = ({ prop, searchParams }) => {
   const { page, pages } = prop;
@@ -9,7 +17,7 @@ const Pagination = ({ prop, searchParams }) => {
   // helper: build href with preserved query params
   const createHref = (newPage) => {
     const params = new URLSearchParams(searchParams);
-    params.set("page", newPage); // replace or add page
+    params.set("page", newPage);
     return `?${params.toString()}`;
   };
 
@@ -27,47 +35,70 @@ const Pagination = ({ prop, searchParams }) => {
     pageNumbers.push(i);
   }
 
+  // Check if we need ellipsis at the beginning
+  const showStartEllipsis = start > 2;
+  // Check if we need ellipsis at the end
+  const showEndEllipsis = end < pages - 1;
+
   return (
-    <div className="flex items-center justify-center gap-2 mt-4">
-      {/* Prev */}
-      <Link
-        href={createHref(page - 1)}
-        className={`px-3 py-1 rounded-md border ${
-          page === 1
-            ? "pointer-events-none bg-gray-200 text-gray-500"
-            : "hover:bg-gray-100"
-        }`}
-      >
-        Prev
-      </Link>
+    <ShadcnPagination className="mt-4">
+      <PaginationContent>
+        {/* Previous Button */}
+        <PaginationItem>
+          {page === 1 ? (
+            <span className="px-3 py-1 rounded-md border bg-gray-200 text-gray-500 cursor-not-allowed">
+              Previous
+            </span>
+          ) : (
+            <PaginationPrevious href={createHref(page - 1)} />
+          )}
+        </PaginationItem>
 
-      {/* Page Numbers */}
-      {pageNumbers.map((num) => (
-        <Link
-          key={num}
-          href={createHref(num)}
-          className={`px-3 py-1 rounded-md border ${
-            page === num
-              ? "bg-blue-500 text-white border-blue-500"
-              : "hover:bg-gray-100"
-          }`}
-        >
-          {num}
-        </Link>
-      ))}
+        {/* First Page (if needed with ellipsis) */}
+        {showStartEllipsis && (
+          <>
+            <PaginationItem>
+              <PaginationLink href={createHref(1)}>1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          </>
+        )}
 
-      {/* Next */}
-      <Link
-        href={createHref(page + 1)}
-        className={`px-3 py-1 rounded-md border ${
-          page === pages
-            ? "pointer-events-none bg-gray-200 text-gray-500"
-            : "hover:bg-gray-100"
-        }`}
-      >
-        Next
-      </Link>
-    </div>
+        {/* Page Numbers */}
+        {pageNumbers.map((num) => (
+          <PaginationItem key={num}>
+            <PaginationLink href={createHref(num)} isActive={page === num}>
+              {num}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+
+        {/* Last Page (if needed with ellipsis) */}
+        {showEndEllipsis && (
+          <>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href={createHref(pages)}>{pages}</PaginationLink>
+            </PaginationItem>
+          </>
+        )}
+
+        {/* Next Button */}
+        <PaginationItem>
+          {page === pages ? (
+            <span className="px-3 py-1 rounded-md border bg-gray-200 text-gray-500 cursor-not-allowed">
+              Next
+            </span>
+          ) : (
+            <PaginationNext href={createHref(page + 1)} />
+          )}
+        </PaginationItem>
+      </PaginationContent>
+    </ShadcnPagination>
   );
 };
 
