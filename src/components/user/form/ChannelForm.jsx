@@ -35,7 +35,7 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
     date: "",
     email: "",
     note: "",
-    whatsapp_send: `788806670`,
+    whatsapp_send: `761294262`,
     hospital_id: `1`,
   });
 

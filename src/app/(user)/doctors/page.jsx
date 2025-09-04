@@ -15,11 +15,11 @@ export const generateMetadata = async ({ searchParams }) => {
     "Browse all doctors available at Arogya Hospital, view their profiles, and book appointments easily.";
 
   if (doc) {
-    title = `Dr. ${doc} | Arogya Hospitals`;
-    description = `Book appointments with Dr. ${doc} at Arogya Hospital. Specialist doctor available for consultations.`;
+    title = `Channeling Doctors List | Arogya Hospitals`;
+    description = `Book Doctor appointments with Arogya Hospital. Specialist doctor available for consultations.`;
   } else if (spec) {
-    title = `${spec} Specialists | Arogya Hospitals`;
-    description = `Find the best ${spec} specialists at Arogya Hospital. Book appointments with experienced doctors.`;
+    title = `Specialists | Arogya Hospitals`;
+    description = `Find the best specialists at Arogya Hospital. Book appointments with experienced doctors.`;
   } else if (page && page !== "1") {
     title = `Doctors - Page ${page} | Arogya Hospitals`;
     description = `Browse doctors page ${page} at Arogya Hospital. Find specialist doctors and book appointments.`;
