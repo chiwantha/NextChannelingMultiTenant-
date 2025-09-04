@@ -5,6 +5,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import HeroCarouselItem from "@/components/user/hero/HeroCarousel";
+import PoweredByKchord from "@/components/user/hero/PoweredByKchord";
 
 export const Menu = [
   {
@@ -123,10 +125,10 @@ export default function Home() {
 
       <div className="space-y-6">
         {/* Hero Section with Carousel */}
-        <section aria-label="Hospital banner images">
+        <section aria-label="Hospital banner images" className="order-1">
           <Carousel delay={5000}>
             <CarouselContent>
-              <CarouselItem>
+              {/* <CarouselItem>
                 <TopImageContainer
                   image={`/hospital/banner/arogya_banner.png`}
                   title="Arogya Hospital - Premier Healthcare Services"
@@ -140,30 +142,21 @@ export default function Home() {
                   description="Community health initiatives and public healthcare programs"
                 />
               </CarouselItem>
+              <CarouselItem>
+                <HeroCarouselItem />
+              </CarouselItem> */}
+              <CarouselItem>
+                <PoweredByKchord />
+              </CarouselItem>
             </CarouselContent>
           </Carousel>
         </section>
 
-        {/* Services Introduction */}
-        <section
-          aria-labelledby="services-heading"
-          className="text-center space-y-1 hidden"
-        >
-          <h1
-            id="services-heading"
-            className="text-3xl font-black text-[#0560D9] uppercase"
-          >
-            Welcome to Arogya Hospitals Portal
-          </h1>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            Your one-stop solution for all healthcare needs. Book appointments
-            with specialist doctors, access your medical history, and manage
-            your healthcare journey seamlessly.
-          </p>
-        </section>
-
         {/* Services Grid */}
-        <section aria-labelledby="quick-services-heading">
+        <section
+          aria-labelledby="quick-services-heading"
+          className="order-2 sm:order-2 md:order-2"
+        >
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             <IconButton
               title={Menu[0].title}
@@ -177,7 +170,7 @@ export default function Home() {
               link={Menu[0].link}
               aria-label={`${Menu[0].title} - ${Menu[0].subtitle}`}
             />
-            {Menu.slice(1, 6).map((item, index) => (
+            {Menu.slice(1, 6).map((item) => (
               <IconButton
                 title={item.title}
                 key={item.title}
@@ -193,6 +186,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* Services Introduction */}
+        {/* Services Introduction */}
       </div>
     </>
   );
