@@ -4,7 +4,11 @@ import Image from "next/image";
 
 const PoweredByKchord = () => {
   return (
-    <section className="relative w-full aspect-[1400/484] overflow-hidden rounded-lg">
+    <section
+      className="relative w-full aspect-[1400/484] overflow-hidden rounded-lg"
+      title="Arogya Hospital - Powered By Kchord Pvt Ltd"
+      description="Sri Lanka's leading Software Solution Provider"
+    >
       {/* Background Image */}
       <motion.div
         className="absolute inset-0 w-full h-full"
@@ -22,7 +26,7 @@ const PoweredByKchord = () => {
       </motion.div>
 
       {/* Foreground Content */}
-      <div className="absolute inset-0 flex flex-col sm:flex-row items-center justify-around gap-4 p-4 md:p-8">
+      <div className="absolute inset-0 flex flex-row items-center justify-around gap-4 p-4 md:p-8">
         {/* Left Image */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
@@ -44,14 +48,14 @@ const PoweredByKchord = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2 }}
-          className="flex items-center justify-center"
+          className="relative h-full w-[40%] flex items-center justify-center"
         >
           <Image
             src="/sys/hero/kchord/center.png"
             alt="Center"
-            width={400}
-            height={150}
-            className="w-[180px] sm:w-[300px] md:w-[400px] h-auto"
+            fill
+            priority
+            className="object-contain"
           />
         </motion.div>
 

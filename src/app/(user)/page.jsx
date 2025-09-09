@@ -1,11 +1,10 @@
 import IconButton from "@/components/shared/buttons/iconbutton/IconButton";
-import TopImageContainer from "@/components/shared/topimagecontainer/TopImageContainer";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import HeroCarouselItem from "@/components/user/hero/HeroCarousel";
+import ArogyaBanner from "@/components/user/hero/ArogyaBanner";
 import PoweredByKchord from "@/components/user/hero/PoweredByKchord";
 
 export const Menu = [
@@ -134,17 +133,10 @@ export default function Home() {
                   title="Arogya Hospital - Premier Healthcare Services"
                   description="Sri Lanka's leading hospital with specialist doctors and advanced medical care"
                 />
-              </CarouselItem>
-              <CarouselItem>
-                <TopImageContainer
-                  image={`/hospital/banner/public_banner.png`}
-                  title="Public Health Awareness"
-                  description="Community health initiatives and public healthcare programs"
-                />
-              </CarouselItem>
-              <CarouselItem>
-                <HeroCarouselItem />
               </CarouselItem> */}
+              <CarouselItem>
+                <ArogyaBanner />
+              </CarouselItem>
               <CarouselItem>
                 <PoweredByKchord />
               </CarouselItem>
