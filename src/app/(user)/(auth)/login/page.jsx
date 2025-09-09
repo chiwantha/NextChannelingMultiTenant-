@@ -1,7 +1,11 @@
-import React from "react";
+import CommingSoon from "@/components/shared/commingsoon/CommingSoon";
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <div>
+      <CommingSoon />
+    </div>
+  );
 };
 
 export default LoginPage;

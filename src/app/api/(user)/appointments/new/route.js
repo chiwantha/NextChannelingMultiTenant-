@@ -3,6 +3,7 @@ import { sendWhatsappMessage } from "@/lib/whatsapp";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
+  const host = request.headers.get(`host`);
   try {
     const body = await request.json();
     const {
@@ -13,13 +14,10 @@ export const POST = async (request) => {
       date,
       email,
       note,
-      whatsapp_send,
       hospital_id,
     } = body;
 
     if (
-      whatsapp_send === null ||
-      whatsapp_send === "" ||
       hospital_id === null ||
       hospital_id === "" ||
       session_id === null ||
@@ -45,6 +43,20 @@ export const POST = async (request) => {
     const safeEmail = email === null || email === "" ? "None" : email;
     const safeNote = note === null || note === "" ? "None" : note;
 
+    // --------------------------------------------------------------------
+    const sql_no = `SELECT whatsapp_send FROM hospital WHERE hostname = ?`;
+    const res_no = await query(sql_no, [host]);
+    if (!res_no?.length) {
+      return NextResponse.json(
+        { error: "Hospital not found" },
+        { status: 404 }
+      );
+    }
+
+    const hospital_no = res_no[0].whatsapp_send;
+
+    // --------------------------------------------------------------------
+
     const sql = `INSERT INTO appointment (hospital_id, session_id, patient, contact, alternate_contact, date, email, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
     const values = [
@@ -67,7 +79,7 @@ export const POST = async (request) => {
       );
 
     // console.log(res.insertId);
-    loadAndSendAppointment(res.insertId, whatsapp_send);
+    loadAndSendAppointment(res.insertId, hospital_no);
     return NextResponse.json({ data: res }, { status: 200 });
   } catch (err) {
     console.error("Appointment Insert Error:", err);

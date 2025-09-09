@@ -1,7 +1,7 @@
-import React from "react";
+import CommingSoon from "@/components/shared/commingsoon/CommingSoon";
 
 const SignInPage = () => {
-  return <div>SignInPage</div>;
+  return <CommingSoon />;
 };
 
 export default SignInPage;
