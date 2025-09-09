@@ -13,7 +13,7 @@ export const GET = async (request, { params }) => {
     INNER JOIN doctors ON doctor_assignments.doctor_id = doctors.id
     INNER JOIN specialization ON doctors.specialization_id = specialization.id
     INNER JOIN incharge ON doctors.hospital_id = incharge.id
-    WHERE doctors.slug = ? AND doctor_assignments.hospital_id = ?`;
+    WHERE doctors.slug = ? AND doctor_assignments.hospital_id = ? AND doctor_assignments.state = 1`;
 
     const sessions_sql = `
     SELECT session.id, day.day, session.start_time, session.end_time,

@@ -15,7 +15,7 @@ export const GET = async (request) => {
       FROM doctor_assignments
       INNER JOIN doctors ON doctors.id = doctor_assignments.doctor_id
       INNER JOIN specialization ON doctors.specialization_id = specialization.id
-      WHERE doctor_assignments.hospital_id = 1
+      WHERE doctor_assignments.hospital_id = 1 AND doctor_assignments.state = 1
     `;
 
     let filter = ``;
@@ -45,7 +45,7 @@ export const GET = async (request) => {
       FROM doctor_assignments
       INNER JOIN doctors ON doctors.id = doctor_assignments.doctor_id
       INNER JOIN specialization ON doctors.specialization_id = specialization.id
-      WHERE doctor_assignments.hospital_id = 1
+      WHERE doctor_assignments.hospital_id = 1 AND doctor_assignments.state = 1
       ${filter}
     `;
     const countResult = await query(countQuery, countValues);
