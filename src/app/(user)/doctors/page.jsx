@@ -6,71 +6,72 @@ import { getDocListCombo } from "@/lib/data";
 export const generateMetadata = async ({ searchParams }) => {
   const param = await searchParams;
   const page = param.page || "1";
-  const doc = param.doc || "";
-  const spec = param.spec || "";
 
-  // Create dynamic metadata based on search parameters
-  let title = "Doctor List | Arogya Hospitals";
-  let description =
-    "Browse all doctors available at Arogya Hospital, view their profiles, and book appointments easily.";
+  // Global metadata
+  const titleBase = "Doctor Channeling in Gampaha";
+  const descriptionBase =
+    "Browse the complete list of doctors and specialists at Arogya Hospitals in Gampaha. Channel top medical experts online and book appointments easily through our secure portal.";
+  const keywordsBase = `
+    Arogya Hospitals channeling, doctor channeling Gampaha, book doctor appointment Gampaha,
+    specialist doctors Gampaha, online doctor booking Sri Lanka, hospital portal Gampaha,
+    Gampaha doctor booking, online doctor channeling Gampaha, best doctors in Gampaha,
+    Gampaha hospital appointments, private hospital Gampaha, medical specialists Gampaha,
+    book specialist doctors online, Gampaha healthcare services, channel doctors online
+  `;
 
-  if (doc) {
-    title = `Channeling Doctors List | Arogya Hospitals`;
-    description = `Book Doctor appointments with Arogya Hospital. Specialist doctor available for consultations.`;
-  } else if (spec) {
-    title = `Specialists | Arogya Hospitals`;
-    description = `Find the best specialists at Arogya Hospital. Book appointments with experienced doctors.`;
-  } else if (page && page !== "1") {
-    title = `Doctors - Page ${page} | Arogya Hospitals`;
-    description = `Browse doctors page ${page} at Arogya Hospital. Find specialist doctors and book appointments.`;
+  // Optional page-specific adjustments
+  let title = titleBase;
+  let description = descriptionBase;
+  if (page && page !== "1") {
+    title = `Doctors - Page ${page}`;
+    description = `Browse doctors page ${page} at Arogya Hospitals Gampaha. Find specialists and book appointments online easily.`;
   }
 
   return {
     title,
     description,
-    keywords: `doctors, specialists, ${spec}, ${doc}, medical appointments, Arogya Hospital, Sri Lanka doctors`,
+    keywords: keywordsBase,
     openGraph: {
       title,
       description,
-      url: `https://portal.arogyahospitals.lk/doctors?${new URLSearchParams(
-        param
-      ).toString()}`,
+      url: "https://portal.arogyahospitals.lk/doctors",
+      siteName: "Arogya Hospitals Portal",
       images: [
         {
           url: "/doctors-og.jpg",
           width: 1200,
           height: 630,
-          alt: "Arogya Hospitals Doctors Directory",
+          alt: "Doctors Directory | Arogya Hospitals Gampaha",
         },
       ],
+      locale: "en_LK",
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/doctors-og.jpg"],
+      creator: "@arogyahospitals",
     },
     alternates: {
-      canonical: `https://portal.arogyahospitals.lk/doctors`,
+      canonical: "https://portal.arogyahospitals.lk/doctors",
     },
+    robots: { index: true, follow: true },
   };
 };
 
 // Generate structured data for the doctors page
 const generateDoctorsStructuredData = (doctors, pagination, searchParams) => {
-  const { doc, spec } = searchParams;
   const baseUrl = "https://portal.arogyahospitals.lk";
 
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: doc
-      ? `Dr. ${doc}`
-      : spec
-      ? `${spec} Specialists`
-      : "Doctor Directory",
+    name: "Doctors Directory | Arogya Hospitals Gampaha",
     description:
-      "List of medical doctors available for appointments at Arogya Hospitals",
-    url: `${baseUrl}/doctors?${new URLSearchParams(searchParams).toString()}`,
+      "A complete list of doctors and specialists available at Arogya Hospitals in Gampaha. Channel doctors online and book appointments easily.",
+    url: `${baseUrl}/doctors`,
     numberOfItems: doctors.length,
     itemListElement: doctors.map((doctor, index) => ({
       "@type": "ListItem",
@@ -82,6 +83,11 @@ const generateDoctorsStructuredData = (doctors, pagination, searchParams) => {
         medicalSpecialty: doctor.specialization,
         image: `${baseUrl}/doctors/${doctor.image}`,
         url: `${baseUrl}/doctors/${doctor.slug}`,
+        availableService: {
+          "@type": "MedicalProcedure",
+          name: "Doctor Channeling Service",
+          provider: { "@id": `${baseUrl}#hospital` },
+        },
       },
     })),
     mainEntityOfPage: {

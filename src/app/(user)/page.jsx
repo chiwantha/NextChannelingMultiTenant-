@@ -64,50 +64,138 @@ export const Menu = [
   },
 ];
 
-// Generate structured data for the home page
+// Metadata for SEO
+export const metadata = {
+  title: "Doctor Channeling in Gampaha | Arogya Hospitals Portal",
+  description:
+    "Channel top doctors and specialists in Gampaha online with Arogya Hospitals. Book appointments easily, access medical consultations, and manage your healthcare conveniently through our portal.",
+  keywords: `doctor channeling Gampaha, book doctor appointment Gampaha, specialist doctors Gampaha, online doctor booking Sri Lanka, Arogya Hospitals Gampaha,
+    hospital portal Gampaha, Gampaha doctor booking, online doctor channeling Gampaha, best doctors in Gampaha, Gampaha hospital appointments,
+    private hospital Gampaha, medical specialists Gampaha, book specialist doctors online, Gampaha healthcare services, Arogya Hospitals online portal,
+    channel doctors online, top doctors Gampaha, Gampaha medical appointments, Sri Lanka doctor booking portal, hospital channeling portal`,
+  authors: [{ name: "Arogya Hospitals" }],
+  creator: "Arogya Hospitals",
+  publisher: "Arogya Hospitals",
+  openGraph: {
+    title: "Doctor Channeling in Gampaha | Arogya Hospitals Portal",
+    description:
+      "Channel your preferred specialist doctors in Gampaha easily with Arogya Hospitals online portal. Book appointments securely and quickly online.",
+    url: "https://portal.arogyahospitals.lk",
+    siteName: "Arogya Hospitals Portal",
+    images: [
+      {
+        url: "https://portal.arogyahospitals.lk/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Doctor Channeling Online at Arogya Hospitals Gampaha",
+      },
+    ],
+    locale: "en_LK",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Doctor Channeling in Gampaha | Arogya Hospitals Portal",
+    description:
+      "Book your preferred doctor online at Arogya Hospitals Gampaha. Channel top specialists easily via our secure portal and manage appointments quickly.",
+    creator: "@arogyahospitals",
+    images: ["https://portal.arogyahospitals.lk/twitter-image.jpg"],
+  },
+  robots: { index: true, follow: true },
+};
+
 const generateStructuredData = () => {
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Arogya Hospitals Portal - Online Doctor Channeling & Appointments",
-    description:
-      "Book doctor appointments online with Sri Lanka's best medical specialists. Arogya Hospitals online portal for easy channeling and healthcare services.",
-    url: "https://portal.arogyahospitals.lk",
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://portal.arogyahospitals.lk",
+    "@graph": [
+      // WebPage
+      {
+        "@type": "WebPage",
+        "@id": "https://portal.arogyahospitals.lk#webpage",
+        name: "Doctor Channeling in Gampaha | Arogya Hospitals Portal",
+        description:
+          "Book doctor appointments online in Gampaha with Arogya Hospitals. Channel top specialists and manage your healthcare easily through our portal.",
+        url: "https://portal.arogyahospitals.lk",
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://portal.arogyahospitals.lk",
+            },
+          ],
         },
-      ],
-    },
-    mainEntity: {
-      "@type": "MedicalOrganization",
-      name: "Arogya Hospitals",
-      medicalSpecialty: [
-        "General Medicine",
-        "Cardiology",
-        "Pediatrics",
-        "Dermatology",
-        "Orthopedics",
-      ],
-      makesOffer: [
-        {
-          "@type": "Offer",
-          name: "Doctor Channeling Service",
-          description: "Online appointment booking with specialist doctors",
+        mainEntity: {
+          "@type": "MedicalOrganization",
+          name: "Arogya Hospitals",
+          medicalSpecialty: [
+            "General Medicine",
+            "Cardiology",
+            "Pediatrics",
+            "Dermatology",
+            "Orthopedics",
+          ],
+          makesOffer: [
+            {
+              "@type": "Offer",
+              name: "Doctor Channeling Service",
+              description: "Online appointment booking with specialist doctors",
+              url: "https://portal.arogyahospitals.lk/doctors",
+            },
+            {
+              "@type": "Offer",
+              name: "Medical Consultation",
+              description:
+                "Professional medical consultations with experienced doctors",
+              url: "https://portal.arogyahospitals.lk/doctors",
+            },
+          ],
         },
-        {
-          "@type": "Offer",
-          name: "Medical Consultation",
-          description:
-            "Professional medical consultations with experienced doctors",
+      },
+      // Hospital
+      {
+        "@type": "Hospital",
+        "@id": "https://www.arogyahospitals.lk#hospital",
+        name: "Arogya Hospitals",
+        description:
+          "Book doctor appointments online in Gampaha with Arogya Hospitals. Channel top specialists and manage healthcare easily.",
+        url: "https://www.arogyahospitals.lk",
+        logo: "https://portal.arogyahospitals.lk/hospital/logo/arogya_logo.png",
+        telephone: "+94-33-222-4592",
+        email: "info@arogyahospitals.lk",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "No.250 Colombo Rd",
+          addressLocality: "Gampaha",
+          addressRegion: "Western Province",
+          addressCountry: "LK",
         },
-      ],
-    },
+        medicalSpecialty: "Multiple Specialties",
+        openingHours: "Mo-Su 08:00-20:00",
+        sameAs: [
+          "https://www.facebook.com/arogyahospitals",
+          "https://www.twitter.com/arogyahospitals",
+          "https://www.linkedin.com/company/arogyahospitals",
+        ],
+      },
+      // Doctor Channeling Service
+      {
+        "@type": "Service",
+        "@id": "https://portal.arogyahospitals.lk#channeling",
+        serviceType: "Doctor Channeling",
+        provider: { "@id": "https://www.arogyahospitals.lk#hospital" },
+        areaServed: { "@type": "City", name: "Gampaha" },
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: "https://portal.arogyahospitals.lk",
+          servicePhone: "+94-33-222-4592",
+        },
+        description:
+          "Online doctor channeling and appointment booking service in Gampaha. Channel top medical specialists through Arogya Hospitals Portal quickly and easily.",
+      },
+    ],
   };
 };
 

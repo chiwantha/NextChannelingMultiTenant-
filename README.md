@@ -1,36 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+here is my hospital info - our website - www.arogyahospitals.lk channeling portal - www.portal.arogyahospitals.lk location gampaha, sri lanka targeting all patient near gampaha and around gampaha to channel doctors in gamapha true us and to our hospital chaneling portal pages - you can search the url and find pages , homepage , channeling btn -> doctor list | aropgya hospitals page , doctor name | doctora profile page and home -> how to use page and things , just search it and filnd it - need each page good and optimized meta titles and descriptions and things to manage best seo
 
-## Getting Started
+here is my portal all page url , jus rremember -
+homepage - https://portal.arogyahospitals.lk/
+doctorspage - https://portal.arogyahospitals.lk/doctors
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- if search enabled and serch by specilisation = https://portal.arogyahospitals.lk/doctors?spec=2
+- if search enabled and serch by doctor = https://portal.arogyahospitals.lk/doctors?doc=3
+- if search by both = https://portal.arogyahospitals.lk/doctors?doc=3&spec=3
+- if cat by page = https://portal.arogyahospitals.lk/doctors?page=2
+  doctors profile page - https://portal.arogyahospitals.lk/doctors/dr-mrs-pearl-mallawaarachchi
+- template - https://portal.arogyahospitals.lk/doctors/doctor_slug

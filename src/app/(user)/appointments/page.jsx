@@ -5,37 +5,43 @@ import { Suspense } from "react";
 
 export const generateMetadata = () => {
   return {
-    title: `My Appointments | Arogya Hospitals`,
-    description: `View and manage your medical appointments with Arogya Hospitals. Access your upcoming channeling sessions and healthcare appointments securely.`,
+    title: `My Appointments`,
+    description: `Securely view and manage your medical appointments and channeling sessions at Arogya Hospitals.`,
     keywords:
       "medical appointments, healthcare, doctor channeling, patient portal, Arogya Hospitals",
-    robots: "noindex, nofollow", // Added to protect personal data
+    robots: "noindex, nofollow", // Protects personal info
     openGraph: {
       title: "My Appointments | Arogya Hospitals Patient Portal",
-      description:
-        "Access your healthcare appointments securely with Arogya Hospitals.",
+      description: "Access your upcoming healthcare appointments securely.",
       type: "website",
+      url: "https://portal.arogyahospitals.lk/appointments",
     },
     twitter: {
       card: "summary",
       title: "My Appointments | Arogya Hospitals",
-      description:
-        "Access your healthcare appointments securely with Arogya Hospitals.",
+      description: "Access your upcoming healthcare appointments securely.",
     },
   };
 };
 
 // Generic structured data about the medical service without personal info
-const generateStructuredData = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    name: "Arogya Hospitals",
-    description:
-      "Healthcare provider offering specialist doctor channeling services",
-    medicalSpecialty: "Healthcare",
-  };
-};
+const generateStructuredData = () => ({
+  "@context": "https://schema.org",
+  "@type": "Hospital",
+  name: "Arogya Hospitals",
+  description:
+    "Arogya Hospitals provides specialist medical services and doctor channeling online in Gampaha, Sri Lanka.",
+  url: "https://portal.arogyahospitals.lk",
+  telephone: "+94-33-222-4592",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "No.250 Colombo Rd",
+    addressLocality: "Gampaha",
+    addressRegion: "Western Province",
+    addressCountry: "LK",
+  },
+  medicalSpecialty: "Multiple Specialties",
+});
 
 async function getAppointments(searchQuery) {
   try {

@@ -9,11 +9,11 @@ const geistSans = Geist({
   display: "swap",
 });
 
-// Company information for structured data
+// Company Information
 const companyInfo = {
   name: "Arogya Hospitals",
   description:
-    "Sri Lanka's premier doctor channeling service. Book appointments with the best medical specialists in Sri Lanka through our online portal.",
+    "Book doctor appointments online in Gampaha with Arogya Hospitals. Channel leading specialists easily through our online portal.",
   url: "https://portal.arogyahospitals.lk",
   mainUrl: "https://www.arogyahospitals.lk",
   logo: "https://portal.arogyahospitals.lk/hospital/logo/arogya_logo.png",
@@ -28,38 +28,33 @@ const companyInfo = {
   },
 };
 
+// Metadata for SEO
 export const metadata = {
   title: {
     default:
-      "Arogya Hospitals Portal - Online Doctor Channeling & Appointments",
-    template: "%s | Arogya Hospitals Portal",
-  },
-  icons: {
-    icon: "/favicon.ico",
+      "Doctor Channeling in Gampaha | Arogya Hospitals Channeling Portal",
+    template: "%s | Arogya Hospitals Gampaha",
   },
   description:
-    "Book doctor appointments online with Sri Lanka's best medical specialists. Arogya Hospitals online portal for easy channeling and healthcare services.",
-  keywords:
-    "online doctor channeling, Sri Lanka doctors, medical appointments, healthcare portal, specialist doctors, Arogya Hospitals booking",
+    "Book doctor appointments online in Gampaha with Arogya Hospitals. Channel top specialists easily through our secure portal. Manage appointments and healthcare conveniently.",
+  keywords: `Arogya Hospitals channeling, doctor channeling Gampaha, book doctor appointment Gampaha, specialist doctors Gampaha, online doctor booking Sri Lanka, 
+    hospital portal Gampaha, Gampaha doctor booking, online doctor channeling Gampaha, best doctors in Gampaha, Gampaha hospital appointments,
+    private hospital Gampaha, medical specialists Gampaha, book specialist doctors online, Gampaha healthcare services, Arogya Hospitals online portal,
+    channel doctors online, top doctors Gampaha, Gampaha medical appointments, Sri Lanka doctor booking portal, hospital channeling portal`,
+  icons: { icon: "/favicon.ico" },
   authors: [{ name: "Arogya Hospitals" }],
   creator: "Arogya Hospitals",
   publisher: "Arogya Hospitals",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL("https://portal.arogyahospitals.lk"),
   alternates: {
     canonical: "/",
-    languages: {
-      en: "https://portal.arogyahospitals.lk",
-    },
+    languages: { en: "https://portal.arogyahospitals.lk" },
   },
   openGraph: {
-    title: "Arogya Hospitals Portal - Online Doctor Channeling",
+    title: "Doctor Channeling in Gampaha | Arogya Hospitals Channeling Portal",
     description:
-      "Book appointments with Sri Lanka's best doctors through our online portal.",
+      "Channel doctors online in Gampaha through Arogya Hospitals. Book appointments with top specialists easily using our secure online portal.",
     url: "https://portal.arogyahospitals.lk",
     siteName: "Arogya Hospitals Portal",
     images: [
@@ -67,7 +62,7 @@ export const metadata = {
         url: "https://portal.arogyahospitals.lk/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Arogya Hospitals Online Portal - Doctor Channeling Service",
+        alt: "Doctor Channeling Online at Arogya Hospitals Gampaha",
       },
     ],
     locale: "en_LK",
@@ -75,9 +70,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arogya Hospitals Portal - Online Doctor Channeling",
+    title: "Doctor Channeling in Gampaha | Arogya Hospitals Channeling Portal",
     description:
-      "Book appointments with Sri Lanka's best doctors through our online portal.",
+      "Book your preferred doctor online at Arogya Hospitals in Gampaha. Channel top specialists conveniently and securely via our portal.",
     creator: "@arogyahospitals",
     images: ["https://portal.arogyahospitals.lk/twitter-image.jpg"],
   },
@@ -94,25 +89,27 @@ export const metadata = {
   },
 };
 
-// Generate structured data for the organization and service
+// Structured Data
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
+    // Hospital
     {
       "@type": "Hospital",
       "@id": "https://www.arogyahospitals.lk#hospital",
       name: "Arogya Hospitals",
-      description: companyInfo.description,
-      url: companyInfo.mainUrl,
-      logo: companyInfo.logo,
-      telephone: companyInfo.telephone,
-      email: companyInfo.email,
+      description:
+        "Book doctor appointments online in Gampaha with Arogya Hospitals. Channel top specialists and manage your healthcare easily through our portal.",
+      url: "https://www.arogyahospitals.lk",
+      logo: "https://portal.arogyahospitals.lk/hospital/logo/arogya_logo.png",
+      telephone: "+94-33-222-4592",
+      email: "info@arogyahospitals.lk",
       address: {
         "@type": "PostalAddress",
-        streetAddress: companyInfo.address.streetAddress,
-        addressLocality: companyInfo.address.addressLocality,
-        addressRegion: companyInfo.address.addressRegion,
-        addressCountry: companyInfo.address.addressCountry,
+        streetAddress: "No.250 Colombo Rd",
+        addressLocality: "Gampaha",
+        addressRegion: "Western Province",
+        addressCountry: "LK",
       },
       medicalSpecialty: "Multiple Specialties",
       openingHours: "Mo-Su 08:00-20:00",
@@ -122,21 +119,36 @@ const structuredData = {
         "https://www.linkedin.com/company/arogyahospitals",
       ],
     },
+    // Website
     {
       "@type": "WebSite",
       "@id": "https://portal.arogyahospitals.lk#website",
       url: "https://portal.arogyahospitals.lk",
-      name: "Arogya Hospitals Portal",
-      description: "Online doctor channeling and appointment booking system",
-      publisher: {
-        "@id": "https://www.arogyahospitals.lk#hospital",
-      },
+      name: "Arogya Hospitals Channeling Portal",
+      description:
+        "Online doctor channeling and appointment booking system in Gampaha. Find specialists and manage appointments easily online through Arogya Hospitals.",
+      publisher: { "@id": "https://www.arogyahospitals.lk#hospital" },
       potentialAction: {
         "@type": "SearchAction",
         target:
           "https://portal.arogyahospitals.lk/search?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
+    },
+    // Doctor Channeling Service
+    {
+      "@type": "Service",
+      "@id": "https://portal.arogyahospitals.lk#channeling",
+      serviceType: "Doctor Channeling",
+      provider: { "@id": "https://www.arogyahospitals.lk#hospital" },
+      areaServed: { "@type": "City", name: "Gampaha" },
+      availableChannel: {
+        "@type": "ServiceChannel",
+        serviceUrl: "https://portal.arogyahospitals.lk",
+        servicePhone: "+94-33-222-4592",
+      },
+      description:
+        "Online doctor channeling and appointment booking service in Gampaha. Channel top medical specialists through Arogya Hospitals Portal quickly and easily.",
     },
   ],
 };
@@ -145,7 +157,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="select-none" data-scroll-behavior="smooth">
       <head>
-        {/* Structured data for the entire website */}
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -167,9 +179,9 @@ export default function RootLayout({ children }) {
 
       <body
         className={`${geistSans.variable} antialiased scroll-smooth space-y-6`}
-        cz-shortcut-listen="true"
       >
         {children}
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-5T5DEMZPKG"
@@ -183,6 +195,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-5T5DEMZPKG');
           `}
         </Script>
+
         <ToastContainer />
       </body>
     </html>

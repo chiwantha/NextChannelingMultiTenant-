@@ -3,44 +3,47 @@ import Image from "next/image";
 
 export const generateMetadata = () => {
   return {
-    title: `How to Channel a Doctor - Step by Step Guide`,
-    description: `Learn how to book doctor appointments online with our easy step-by-step guide. Complete instructions for using Arogya Hospitals' channeling portal.`,
+    title: `How to Channel a Doctor Online | Arogya Hospitals Gampaha`,
+    description: `Step-by-step guide to channeling doctors online via Arogya Hospitals portal in Gampaha. Book appointments quickly and conveniently.`,
     keywords:
-      "how to channel doctor, book appointment, online booking, doctor channeling guide, Arogya Hospitals",
+      "how to channel doctor, online doctor booking Gampaha, doctor appointments Gampaha, Arogya Hospitals, channeling guide, Sri Lanka",
     openGraph: {
-      title: "How to Channel a Doctor - Step by Step Guide | Arogya Hospitals",
+      title: "How to Channel a Doctor Online | Arogya Hospitals Gampaha",
       description:
-        "Learn how to book doctor appointments online with our easy step-by-step guide.",
-      url: "https://portal.arogyahospitals.lk/how-to-use",
+        "Learn how to book doctor appointments online with our step-by-step channeling guide at Arogya Hospitals in Gampaha.",
+      url: "https://portal.arogyahospitals.lk/how-to-use/how-to-channel",
+      siteName: "Arogya Hospitals",
       images: [
         {
-          url: "/how-to-use-og.jpg",
+          url: "https://portal.arogyahospitals.lk/images/how-to-channel-og.jpg",
           width: 1200,
           height: 630,
-          alt: "How to Channel a Doctor - Arogya Hospitals Guide",
+          alt: "How to Channel a Doctor Online - Arogya Hospitals Gampaha",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "How to Channel a Doctor - Step by Step Guide | Arogya Hospitals",
+      title: "How to Channel a Doctor Online | Arogya Hospitals Gampaha",
       description:
-        "Learn how to book doctor appointments online with our easy step-by-step guide.",
+        "Step-by-step guide to channel doctors online at Arogya Hospitals in Gampaha. Book your doctor appointments quickly and securely.",
+      images: [
+        "https://portal.arogyahospitals.lk/images/how-to-channel-og.jpg",
+      ],
     },
     alternates: {
-      canonical: "https://portal.arogyahospitals.lk/how-to-use",
+      canonical: "https://portal.arogyahospitals.lk/how-to-use/how-to-channel",
     },
   };
 };
 
-// Generate structured data for the HowTo guide
 const generateHowToStructuredData = (steps) => {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Channel a Doctor at Arogya Hospitals",
+    name: "How to Channel a Doctor at Arogya Hospitals in Gampaha",
     description:
-      "Step-by-step guide to booking doctor appointments online through Arogya Hospitals portal",
+      "Step-by-step guide to booking doctor appointments online through Arogya Hospitals portal in Gampaha.",
     totalTime: "PT5M",
     estimatedCost: {
       "@type": "MonetaryAmount",
@@ -58,20 +61,32 @@ const generateHowToStructuredData = (steps) => {
       })),
       image: {
         "@type": "ImageObject",
-        contentUrl: step.image,
+        contentUrl: `https://portal.arogyahospitals.lk${step.image}`,
         description: step.title,
       },
     })),
     supply: [
-      {
-        "@type": "HowToSupply",
-        name: "Internet connection",
-      },
-      {
-        "@type": "HowToSupply",
-        name: "Web browser",
-      },
+      { "@type": "HowToSupply", name: "Internet connection" },
+      { "@type": "HowToSupply", name: "Web browser" },
     ],
+    tool: [
+      { "@type": "HowToTool", name: "Computer / Mobile device" },
+      { "@type": "HowToTool", name: "Arogya Hospitals portal access" },
+    ],
+    provider: {
+      "@type": "Hospital",
+      name: "Arogya Hospitals",
+      url: "https://portal.arogyahospitals.lk",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "No.250 Colombo Rd",
+        addressLocality: "Gampaha",
+        addressRegion: "Western Province",
+        addressCountry: "LK",
+      },
+      telephone: "+94-33-222-4592",
+      email: "info@arogyahospitals.lk",
+    },
   };
 };
 

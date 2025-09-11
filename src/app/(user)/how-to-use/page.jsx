@@ -1,40 +1,43 @@
 import LinkCard from "@/components/user/cards/linkCard/LinkCard";
 
 export const metadata = {
-  title: "How to Use Arogya Hospitals Online Portal",
+  title:
+    "How to Use Arogya Hospitals Online Portal | Channel Doctors in Gampaha",
   description:
-    "Learn how to book doctor appointments, order medicines online, schedule lab tests, and access prescriptions digitally through Arogya Hospitals' online portal.",
+    "Step-by-step guide to using Arogya Hospitals online portal. Book doctor appointments, order medicines, schedule lab tests, and access prescriptions digitally in Gampaha.",
   keywords: [
     "Arogya Hospitals",
-    "doctor appointments online",
+    "doctor channeling Gampaha",
+    "book doctor appointment Gampaha",
+    "online doctor booking Sri Lanka",
     "online pharmacy Sri Lanka",
     "book lab tests",
     "digital prescriptions",
     "hospital portal guide",
   ],
   openGraph: {
-    title: "How to Use Arogya Hospitals Online Portal",
+    title: "How to Use Arogya Hospitals Online Portal | Gampaha",
     description:
-      "Step-by-step guide to using Arogya Hospitals online portal for channeling, pharmacy orders, lab appointments, and prescriptions.",
-    url: "https://your-domain.com/how-to-use",
+      "Learn how to book doctors, order medicines, schedule lab tests, and manage prescriptions online through Arogya Hospitals portal in Gampaha.",
+    url: "https://portal.arogyahospitals.lk/how-to-use",
     siteName: "Arogya Hospitals",
     images: [
       {
-        url: "https://your-domain.com/images/how-to-use-cover.jpg",
+        url: "https://portal.arogyahospitals.lk/images/how-to-use-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Arogya Hospitals Online Portal",
+        alt: "Arogya Hospitals Online Portal in Gampaha",
       },
     ],
-    locale: "en_US",
+    locale: "en_LK",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "How to Use Arogya Hospitals Online Portal",
+    title: "How to Use Arogya Hospitals Online Portal | Gampaha",
     description:
-      "Easily book doctor appointments, order medicines, and access medical services online with Arogya Hospitals portal.",
-    images: ["https://your-domain.com/images/how-to-use-cover.jpg"],
+      "Easily channel doctors, book appointments, order medicines, and access lab results online at Arogya Hospitals portal in Gampaha.",
+    images: ["https://portal.arogyahospitals.lk/images/how-to-use-cover.jpg"],
   },
 };
 
@@ -77,6 +80,42 @@ const links = [
 const HowToUsePage = () => {
   return (
     <div className="space-y-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "How to Use Arogya Hospitals Online Portal",
+            description:
+              "Step-by-step guide to using Arogya Hospitals online portal in Gampaha for doctor channeling, online pharmacy, lab appointments, and digital prescriptions.",
+            url: "https://portal.arogyahospitals.lk/how-to-use",
+            publisher: {
+              "@type": "Hospital",
+              name: "Arogya Hospitals",
+              url: "https://portal.arogyahospitals.lk",
+              logo: "https://portal.arogyahospitals.lk/hospital/logo/arogya_logo.png",
+              telephone: "+94-33-222-4592",
+              email: "info@arogyahospitals.lk",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "No.250 Colombo Rd",
+                addressLocality: "Gampaha",
+                addressRegion: "Western Province",
+                addressCountry: "LK",
+              },
+            },
+            mainEntity: links.map((item) => ({
+              "@type": "Service",
+              name: item.title,
+              description: item.description,
+              url: item.link
+                ? `https://portal.arogyahospitals.lk${item.link}`
+                : "https://portal.arogyahospitals.lk/how-to-use",
+            })),
+          }),
+        }}
+      />
       {/* Hero Section */}
       <header className="p-6 rounded-lg shadow-md bg-[#0560D9]">
         <h1 className="text-3xl font-bold mb-2 text-slate-100">

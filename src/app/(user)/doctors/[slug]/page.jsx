@@ -16,16 +16,16 @@ export async function generateMetadata({ params }) {
     const specialization =
       data?.profile_data?.specialization || "Medical Specialist";
     const hospital = data?.profile_data?.hospital || "Arogya Hospital";
-    const description =
+    const descriptionText =
       data?.profile_data?.description || "Experienced medical professional";
 
     return {
-      title: `Dr. ${doctorName} - ${specialization} | Arogya Hospitals`,
-      description: `Book appointments with Dr. ${doctorName}, ${specialization} at ${hospital}. ${description}. View available sessions and book your appointment online.`,
-      keywords: `Dr. ${doctorName}, ${specialization}, ${hospital}, doctor appointment, medical consultation, Sri Lanka doctor`,
+      title: `${doctorName} | ${specialization} | ${hospital} | Channeling in Gampaha`,
+      description: `Book online appointments with Dr. ${doctorName}, ${specialization} at ${hospital}, Gampaha. Easily channel top doctors through Arogya Hospitals portal. ${descriptionText}`,
+      keywords: `Dr. ${doctorName}, ${specialization}, Arogya Hospitals, doctor channeling Gampaha, book doctor appointment Gampaha, online doctor booking Sri Lanka, Gampaha specialist doctors`,
       openGraph: {
-        title: `Dr. ${doctorName} - ${specialization} | Arogya Hospitals`,
-        description: `Book appointments with Dr. ${doctorName}, ${specialization} at ${hospital}.`,
+        title: `Dr. ${doctorName} | ${specialization} | Arogya Hospitals Gampaha`,
+        description: `Channel Dr. ${doctorName} online at Arogya Hospitals, Gampaha. Book appointments with this specialist doctor easily.`,
         url: `https://portal.arogyahospitals.lk/doctors/${slug}`,
         type: "profile",
         images: [
@@ -46,8 +46,13 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: "summary_large_image",
-        title: `Dr. ${doctorName} - ${specialization} | Arogya Hospitals`,
-        description: `Book appointments with Dr. ${doctorName}, ${specialization} at Arogya Hospital.`,
+        title: `Dr. ${doctorName} | ${specialization} | Arogya Hospitals`,
+        description: `Book appointments online with Dr. ${doctorName}, ${specialization} at Arogya Hospitals, Gampaha.`,
+        images: [
+          data?.profile_data?.image
+            ? `https://portal.arogyahospitals.lk/doctors/${data.profile_data.image}`
+            : "/doctor-profile-og.jpg",
+        ],
       },
       alternates: {
         canonical: `https://portal.arogyahospitals.lk/doctors/${slug}`,
@@ -56,12 +61,11 @@ export async function generateMetadata({ params }) {
   } catch (err) {
     return {
       title: `Doctor Profile | Arogya Hospitals`,
-      description: `View the doctor's profile, check available time slots, and book your appointment easily at Arogya Hospitals.`,
+      description: `View the doctor's profile, check available time slots, and book appointments easily at Arogya Hospitals, Gampaha.`,
     };
   }
 }
 
-// Generate structured data for the doctor profile
 const generateDoctorStructuredData = (profile, sessions, slug) => {
   if (!profile) return null;
 
@@ -71,27 +75,38 @@ const generateDoctorStructuredData = (profile, sessions, slug) => {
     "@id": `https://portal.arogyahospitals.lk/doctors/${slug}#doctor`,
     name: `Dr. ${profile.name}`,
     description:
-      profile.description || "Medical specialist at Arogya Hospitals",
+      profile.description || `Medical specialist at Arogya Hospitals, Gampaha`,
     medicalSpecialty: profile.specialization,
     worksFor: {
       "@type": "Hospital",
       name: profile.hospital || "Arogya Hospital",
       url: "https://portal.arogyahospitals.lk",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Gampaha",
+        addressRegion: "Western Province",
+        addressCountry: "LK",
+      },
     },
     image: `https://portal.arogyahospitals.lk/doctors/${profile.image}`,
     url: `https://portal.arogyahospitals.lk/doctors/${slug}`,
+    areaServed: {
+      "@type": "City",
+      name: "Gampaha",
+    },
     availableService: sessions.map((session) => ({
-      "@type": "Service",
+      "@type": "MedicalProcedure",
       name: `Medical Consultation - ${session.type}`,
-      description: `Appointment with Dr. ${profile.name}`,
+      description: `Appointment with Dr. ${profile.name} at ${profile.hospital}`,
       offers: {
         "@type": "Offer",
         price: session.fee,
         priceCurrency: "LKR",
       },
-      availableAtOrFrom: {
+      provider: {
         "@type": "Hospital",
         name: profile.hospital || "Arogya Hospital",
+        url: "https://portal.arogyahospitals.lk",
       },
     })),
     mainEntityOfPage: {
