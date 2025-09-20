@@ -155,7 +155,7 @@ const structuredData = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="select-none" data-scroll-behavior="smooth">
+    <html lang="en" className="" data-scroll-behavior="smooth">
       <head>
         {/* Structured Data */}
         <script

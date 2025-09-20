@@ -120,10 +120,16 @@ async function getProfile(doctor_id) {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_APP_URL}/api/doctors/${doctor_id}`,
-      { next: { revalidate: 60 } }
+      { cache: "no-store" }
     );
 
-    if (!res.ok) throw new Error("Failed to fetch profile");
+    if (!res.ok) {
+      // throw new Error("Failed to fetch profile");
+      return {
+        profile_data: null,
+        sessions_data: [],
+      };
+    }
 
     return res.json();
   } catch (err) {
@@ -172,22 +178,23 @@ const DoctorProfilePage = async ({ params }) => {
         <div className="sm:col-span-3">
           {/* Available Sessions */}
           <section aria-labelledby="sessions-heading">
-            <h2
-              id="sessions-heading"
-              className="text-2xl font-semibold text-gray-700 mb-4"
-            >
-              Available Sessions
-            </h2>
-
             {sessions.length > 0 ? (
-              <div className="flex flex-col gap-4">
-                {sessions.map((session, index) => (
-                  <SessionBar
-                    key={session.id || index}
-                    session_data={session}
-                  />
-                ))}
-              </div>
+              <>
+                <h2
+                  id="sessions-heading"
+                  className="text-2xl font-semibold text-gray-700 mb-4"
+                >
+                  Available Sessions
+                </h2>
+                <div className="flex flex-col gap-4">
+                  {sessions.map((session, index) => (
+                    <SessionBar
+                      key={session.id || index}
+                      session_data={session}
+                    />
+                  ))}
+                </div>
+              </>
             ) : (
               <div className="bg-white p-6 rounded-lg border border-gray-200 text-center">
                 <h3 className="text-lg font-medium text-gray-700 mb-2">

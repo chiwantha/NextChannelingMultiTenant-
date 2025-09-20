@@ -26,13 +26,13 @@ export const GET = async (request, { params }) => {
   `;
 
     const profile = await query(proflie_sql, [slug, hospital_id]);
-    if (!profile)
+    if (!profile || profile.length <= 0)
       return NextResponse.json(
         { error: "Doctor Not Found !" },
         { status: 404 }
       );
     const sessions = await query(sessions_sql, [slug, hospital_id]);
-    if (!sessions)
+    if (!sessions || sessions.length <= 0)
       return NextResponse.json(
         { error: "Sessions Not Found !" },
         { status: 404 }

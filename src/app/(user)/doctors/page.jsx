@@ -102,9 +102,7 @@ async function getDoctors(page = 1, limit = 12, doc = "", spec = "") {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_APP_URL}/api/doctors?page=${page}&limit=${limit}&doc=${doc}&spec=${spec}`,
       {
-        next: {
-          revalidate: 60,
-        },
+        cache: "no-store",
       }
     );
     if (!res.ok) throw new Error("Failed to fetch doctors");
@@ -125,7 +123,9 @@ async function getDoctors(page = 1, limit = 12, doc = "", spec = "") {
 
 const DoctorsPage = async ({ searchParams }) => {
   // Doctor List For Combo
-  const doctorList = await getDocListCombo();
+  const doctorList = await getDocListCombo({
+    hospital_id: 1,
+  });
   const docList = await doctorList.json();
 
   // Search Params

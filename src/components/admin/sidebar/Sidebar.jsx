@@ -7,11 +7,10 @@ import { FiSettings } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
 import { FaStethoscope } from "react-icons/fa";
 import { MdEventNote, MdAssessment } from "react-icons/md";
+import { useSidebar } from "@/context/SidebarContext";
+import { signOut } from "next-auth/react";
 
 import SidebarItem from "./sidebarItem/SidebarItem";
-import { useSidebar } from "@/context/SidebarContext";
-
-import { signOut } from "next-auth/react";
 
 const sideBar = [
   {
