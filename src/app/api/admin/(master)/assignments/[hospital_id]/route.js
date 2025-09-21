@@ -8,6 +8,7 @@ export const GET = async (request, { params }) => {
     const sql = `
   SELECT 
     da.doctor_id AS id,
+    da.state AS state,
     d.name,
     d.slug,
     s2.specialization,

@@ -1,3 +1,4 @@
+import DocAssignCard from "@/components/admin/cards/doctorcard/DocAssignCard";
 import DataCardGrid from "@/components/admin/datacardgrid/DataCardGrid";
 
 async function getAssignedDoctors(hospital_id) {
@@ -33,9 +34,7 @@ const AssignedDocPage = async ({ params }) => {
       <div className="">
         <DataCardGrid>
           {data.doctors.map((doc, index) => (
-            <div className="p-4 rounded-lg border " key={index}>
-              {doc.name}
-            </div>
+            <DocAssignCard key={index} props={{ ...doc, hospital_id }} />
           ))}
         </DataCardGrid>
       </div>
