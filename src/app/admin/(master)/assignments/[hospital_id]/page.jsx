@@ -1,4 +1,4 @@
-import DataTable from "@/components/admin/datatable/DataTable";
+import DataCardGrid from "@/components/admin/datacardgrid/DataCardGrid";
 
 async function getAssignedDoctors(hospital_id) {
   try {
@@ -29,9 +29,15 @@ const AssignedDocPage = async ({ params }) => {
 
   return (
     <div className="flex flex-col space-y-2">
-      <span className="text-gray-500 uppercase text-sm">Hospitals</span>
+      <span className="text-gray-500 uppercase text-sm">Doctors</span>
       <div className="">
-        <DataTable doctors={data.doctors} />
+        <DataCardGrid>
+          {data.doctors.map((doc, index) => (
+            <div className="p-4 rounded-lg border " key={index}>
+              {doc.name}
+            </div>
+          ))}
+        </DataCardGrid>
       </div>
     </div>
   );
