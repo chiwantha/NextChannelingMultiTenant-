@@ -178,7 +178,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body
-        className={`${geistSans.variable} antialiased scroll-smooth space-y-6`}
+        className={`${geistSans.variable} antialiased  scroll-smooth space-y-6`}
       >
         {children}
 

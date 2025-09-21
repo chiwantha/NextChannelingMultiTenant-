@@ -1,4 +1,5 @@
 import { query } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
@@ -20,7 +21,6 @@ export const GET = async (request, { params }) => {
                      AND s.hospital_id = da.hospital_id
                      AND s.state = 1
   WHERE da.hospital_id = ?
-    AND da.state = 1
   GROUP BY da.doctor_id, d.name, d.slug, s2.specialization
 `;
 
@@ -39,6 +39,45 @@ export const GET = async (request, { params }) => {
     return NextResponse.json(
       { error: "Internal Server Error!" },
       { status: 500 }
+    );
+  }
+};
+
+export const POST = async (request, { params }) => {
+  try {
+    const { hospital_id } = await params;
+    const body = await request.json();
+
+    if (!body || body.state === "" || body.doctor_id === "" || !hospital_id) {
+      return NextResponse.json({ error: "Data Missing !" }, { status: 404 });
+    }
+
+    const sql = `UPDATE doctor_assignments SET state=? WHERE doctor_id=? AND hospital_id=?`;
+
+    const res = await query(sql, [body.state, body.doctor_id, hospital_id]);
+
+    if (res.affectedRows !== 1) {
+      return NextResponse.json(
+        { error: "Failed To Update Row" },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        status: `success`,
+      },
+      { status: 200 }
+    );
+  } catch (err) {
+    console.log("Internal Server Error : ", err);
+    return NextResponse.json(
+      {
+        error: "Internal Server Error",
+      },
+      {
+        status: 500,
+      }
     );
   }
 };
