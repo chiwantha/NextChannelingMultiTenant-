@@ -26,12 +26,12 @@ export const ColorPallet = {
 
 export const Instructions = {
   english: `After you submit your appointment, we will 
-  call you within 30 minutes to confirm the date and time. 
+  call you within 1 hour to confirm the date and time. 
   Please wait for our call.If you submit after 10 PM, 
   we will confirm it the next day before 10 AM`,
 
   sinhala: `ඔබ ඔබගේ හමුවීම ඉදිරිපත් කළ පසු, දිනය සහ වේලාව තහවුරු 
-  කිරීම සඳහා අපි විනාඩි 30ක් ඇතුළත ඔබට කතා කරන්නෙමු. 
+  කිරීම සඳහා අපි පැයක් ඇතුළත ඔබව අමතන්නෙමු. 
   අපගේ ඇමතුම එනතෙක් රැඳී සිටින්න.ඔබ රාත්‍රී 10ට පසු ඉදිරිපත් කළහොත්,
    එය ඊළඟ දින පෙරවරු 10ට පෙර තහවුරු කෙරේ`,
 };

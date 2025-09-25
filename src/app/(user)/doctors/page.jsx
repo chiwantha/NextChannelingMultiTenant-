@@ -101,7 +101,7 @@ async function getDoctors(page = 1, limit = 12, doc = "", spec = "") {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_APP_URL}/api/doctors?page=${page}&limit=${limit}&doc=${doc}&spec=${spec}`,
       {
-        next: { revalidate: 30 },
+        cache: "no-store",
       }
     );
     if (!res.ok) {
