@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 
-const Button = ({ title = "Button", click, bg, pd, link, fw, type }) => {
+const Button = ({
+  title = "Button",
+  click,
+  bg,
+  pd,
+  link,
+  fw,
+  type,
+  disabled,
+}) => {
   const classes = `${bg || "bg-[#0560D9] hover:bg-[#0C4A9C] text-white"} 
                    rounded-lg ${pd || "px-3 py-1"}
                    ${fw && `w-full`}
@@ -18,7 +27,12 @@ const Button = ({ title = "Button", click, bg, pd, link, fw, type }) => {
   }
 
   return (
-    <button onClick={click} type={type || `button`} className={classes}>
+    <button
+      onClick={click}
+      type={type || `button`}
+      disabled={disabled}
+      className={classes}
+    >
       {title}
     </button>
   );

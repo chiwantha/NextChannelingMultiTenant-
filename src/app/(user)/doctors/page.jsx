@@ -61,7 +61,6 @@ export const generateMetadata = async ({ searchParams }) => {
   };
 };
 
-// Generate structured data for the doctors page
 const generateDoctorsStructuredData = (doctors, pagination, searchParams) => {
   const baseUrl = "https://portal.arogyahospitals.lk";
 
@@ -102,10 +101,21 @@ async function getDoctors(page = 1, limit = 12, doc = "", spec = "") {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_APP_URL}/api/doctors?page=${page}&limit=${limit}&doc=${doc}&spec=${spec}`,
       {
-        cache: "no-store",
+        next: { revalidate: 30 },
       }
     );
-    if (!res.ok) throw new Error("Failed to fetch doctors");
+    if (!res.ok) {
+      console.error("Failed to fetch doctors");
+      return {
+        doctors: [],
+        pagination: {
+          page: 1,
+          limit: 12,
+          total: 0,
+          pages: 0,
+        },
+      };
+    }
     return res.json();
   } catch (err) {
     console.log("Error Fetching Doctors : ", err);

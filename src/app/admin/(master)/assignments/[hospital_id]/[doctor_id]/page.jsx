@@ -3,7 +3,7 @@ async function getAssignedDocSessions(hospital_id, doctor_id) {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_APP_URL}/api/admin/assignments/${hospital_id}/${doctor_id}`,
       {
-        cache: "no-store",
+        next: { revalidate: 60 },
       }
     );
 

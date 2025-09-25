@@ -1,11 +1,13 @@
 import HospitalCard from "@/components/admin/cards/hospitalcard/HospitalCard";
 
+export const dynamic = "force-dynamic";
+
 async function getHospitals() {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_APP_URL}/api/admin/assignments`,
       {
-        cache: "no-store",
+        next: { revalidate: 60 },
       }
     );
 
@@ -18,14 +20,14 @@ async function getHospitals() {
 
     return res.json();
   } catch (err) {
-    console.error(`Error Fetching Hospitals : `, err);
+    console.error(`Error Fetching Hospitalss : `, err);
     return {
       hospitals: [],
     };
   }
 }
 
-const HospitalPage = async () => {
+const HospitalPage = async ({ params }) => {
   const data = await getHospitals();
   const hospitals = data.formatted;
 

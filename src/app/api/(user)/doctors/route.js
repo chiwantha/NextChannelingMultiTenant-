@@ -11,45 +11,39 @@ export const GET = async (request) => {
     const spec = searchParams.get("spec") || null;
 
     let sql = `
-      SELECT doctor_assignments.doctor_id AS id, doctors.name, doctors.slug, specialization.specialization, doctors.image
-      FROM doctor_assignments
-      INNER JOIN doctors ON doctors.id = doctor_assignments.doctor_id
-      INNER JOIN specialization ON doctors.specialization_id = specialization.id
-      WHERE doctor_assignments.hospital_id = 1 AND doctor_assignments.state = 1
+      SELECT 
+        da.doctor_id AS id,
+        d.name, 
+        d.slug, 
+        s.specialization, 
+        d.image,
+        COUNT(*) OVER() AS total_count
+      FROM doctor_assignments da
+      INNER JOIN doctors d ON d.id = da.doctor_id
+      INNER JOIN specialization s ON d.specialization_id = s.id
+      WHERE da.hospital_id = 1 AND da.state = 1
     `;
 
     let filter = ``;
-    let values = [];
-    let countValues = [];
+    const values = [];
 
     if (doctor) {
-      filter += ` AND doctor_assignments.doctor_id=?`;
+      filter += ` AND da.doctor_id=?`;
       values.push(doctor);
-      countValues.push(doctor);
     }
 
     if (spec) {
-      filter += ` AND doctors.specialization_id=?`;
+      filter += ` AND d.specialization_id=?`;
       values.push(spec);
-      countValues.push(spec);
     }
 
-    // Query for doctors with pagination
+    // Add pagination
     const sql_query = sql + filter + ` LIMIT ? OFFSET ?`;
     values.push(limit, offset);
+
     const doctors = await query(sql_query, values);
 
-    // Count query (without LIMIT/OFFSET)
-    const countQuery = `
-      SELECT COUNT(doctor_assignments.doctor_id) as total
-      FROM doctor_assignments
-      INNER JOIN doctors ON doctors.id = doctor_assignments.doctor_id
-      INNER JOIN specialization ON doctors.specialization_id = specialization.id
-      WHERE doctor_assignments.hospital_id = 1 AND doctor_assignments.state = 1
-      ${filter}
-    `;
-    const countResult = await query(countQuery, countValues);
-    const total = countResult[0]?.total || 0;
+    const total = doctors.length > 0 ? doctors[0].total_count : 0;
 
     return NextResponse.json(
       {
