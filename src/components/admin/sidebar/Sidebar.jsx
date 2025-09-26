@@ -1,12 +1,13 @@
 "use client";
 import { RiDashboardFill } from "react-icons/ri";
 import { HiDocumentText } from "react-icons/hi";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaStethoscope, FaHospitalAlt } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
 import { FiSettings } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
-import { FaStethoscope } from "react-icons/fa";
 import { MdEventNote, MdAssessment } from "react-icons/md";
+import { FaUserDoctor } from "react-icons/fa6";
+import { PiNetworkFill } from "react-icons/pi";
 import { useSidebar } from "@/context/SidebarContext";
 import { signOut } from "next-auth/react";
 
@@ -62,6 +63,26 @@ const sideBar = [
     title: "Settings",
     link: "/admin/settings",
     icon: <FiSettings />,
+  },
+  {
+    title: "Master",
+    submenu: [
+      {
+        title: "Assignments",
+        link: "/admin/assignments",
+        icon: <PiNetworkFill />,
+      },
+      {
+        title: "Doctors",
+        link: "/admin/doctors",
+        icon: <FaUserDoctor />,
+      },
+      {
+        title: "Hospitals",
+        link: "/admin/hospitals",
+        icon: <FaHospitalAlt />,
+      },
+    ],
   },
   {
     title: "Portal",
