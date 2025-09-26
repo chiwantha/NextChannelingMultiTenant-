@@ -16,7 +16,8 @@ const Button = ({
                    rounded-lg ${pd || "px-3 py-1"}
                    ${fw && `w-full`}
                    transition-colors duration-300 cursor-pointer 
-                   font-bold flex items-center justify-center`;
+                   font-bold flex items-center justify-center
+                   ${disabled && `cursor-not-allowed`}`;
 
   if (link) {
     return (

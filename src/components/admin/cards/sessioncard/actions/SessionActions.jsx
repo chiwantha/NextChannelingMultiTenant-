@@ -6,7 +6,7 @@ import Button from "@/components/shared/buttons/button/Button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const SessionActions = ({ session_info, query }) => {
+const SessionActions = ({ session_info, query, setIsOpen, IsOpen }) => {
   const router = useRouter();
   const [pending, setPending] = useState({
     edit: false,
@@ -69,15 +69,18 @@ const SessionActions = ({ session_info, query }) => {
           <Button
             title={<MdEdit />}
             bg={`bg-[#0460D9] hover:bg-[#0B4A9C] text-white px-2 py-1
-                 rounded-lg cursor-not-allowed text-xl
+                 rounded-lg  text-xl
                  ${pending.edit && `animate-pulse cursor-not-allowed`}`}
             pd={`px-2 py-2`}
-            disabled={pending.edit}
+            disabled={IsOpen}
+            click={() => {
+              setIsOpen(true);
+            }}
           />
           <Button
             title={<HiBoltSlash />}
             bg={`bg-orange-500 text-white px-2 py-1 hover:bg-orange-600
-                 rounded-lg cursor-not-allowed text-xl
+                 rounded-lg  text-xl
                  ${pending.deactivate && `animate-pulse cursor-not-allowed`}`}
             pd={`px-2 py-2`}
             click={() => {
@@ -91,7 +94,7 @@ const SessionActions = ({ session_info, query }) => {
           <Button
             title={<HiBolt />}
             bg={`bg-green-500 text-white px-2 py-1 hover:bg-green-600
-                rounded-lg cursor-not-allowed text-xl 
+                rounded-lg  text-xl 
                 ${pending.activate && `animate-pulse cursor-not-allowed`}`}
             pd={`px-2 py-2`}
             click={() => {
@@ -102,7 +105,7 @@ const SessionActions = ({ session_info, query }) => {
           <Button
             title={<MdDelete />}
             bg={`bg-red-500 text-white px-2 py-1 hover:bg-red-600
-                rounded-lg cursor-not-allowed text-xl
+                rounded-lg  text-xl
                 ${pending.delete && `animate-pulse cursor-not-allowed`}`}
             pd={`px-2 py-2`}
             click={() => {
