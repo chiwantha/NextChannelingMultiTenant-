@@ -25,6 +25,26 @@ const sideBar = [
     icon: <RiDashboardFill />,
   },
   {
+    title: "Master",
+    submenu: [
+      {
+        title: "Assignments",
+        link: "/admin/assignments",
+        icon: <PiNetworkFill />,
+      },
+      {
+        title: "Doctors",
+        link: "/admin/doctors",
+        icon: <FaUserDoctor />,
+      },
+      {
+        title: "Hospitals",
+        link: "/admin/hospitals",
+        icon: <FaHospitalAlt />,
+      },
+    ],
+  },
+  {
     title: "Channeling",
     submenu: [
       {
@@ -59,30 +79,11 @@ const sideBar = [
       },
     ],
   },
+
   {
     title: "Settings",
     link: "/admin/settings",
     icon: <FiSettings />,
-  },
-  {
-    title: "Master",
-    submenu: [
-      {
-        title: "Assignments",
-        link: "/admin/assignments",
-        icon: <PiNetworkFill />,
-      },
-      {
-        title: "Doctors",
-        link: "/admin/doctors",
-        icon: <FaUserDoctor />,
-      },
-      {
-        title: "Hospitals",
-        link: "/admin/hospitals",
-        icon: <FaHospitalAlt />,
-      },
-    ],
   },
   {
     title: "Portal",

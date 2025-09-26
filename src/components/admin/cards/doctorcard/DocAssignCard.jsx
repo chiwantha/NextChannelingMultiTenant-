@@ -66,7 +66,7 @@ const DocAssignCard = ({ props }) => {
         <Button
           bg="bg-[#4DB847] hover:bg-[#00A63E] text-white"
           title="Sessions"
-          link={`/admin/assignments/${hospital_id}/${slug}`}
+          link={`/admin/assignments/${hospital_id}/${id}`}
         />
         {state == 1 ? (
           <Button
