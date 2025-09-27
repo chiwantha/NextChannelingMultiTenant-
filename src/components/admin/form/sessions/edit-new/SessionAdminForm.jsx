@@ -24,7 +24,7 @@ const sessionTypes = {
   Night: 4,
 };
 
-const SessionEditForm = ({ data, setIsOpen, query }) => {
+const SessionAdminForm = ({ data, setIsOpen, query, action }) => {
   const [pending, setPending] = useState(false);
   const router = useRouter();
   const { hospital_id, doctor_id } = query || "";
@@ -88,7 +88,7 @@ const SessionEditForm = ({ data, setIsOpen, query }) => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/admin/assignments/${hospital_id}/${doctor_id}/edit`,
+        `${process.env.NEXT_PUBLIC_APP_URL}/api/admin/assignments/${hospital_id}/${doctor_id}/edit-new`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -124,7 +124,7 @@ const SessionEditForm = ({ data, setIsOpen, query }) => {
         {/* Top Strip */}
         <div className="w-full flex justify-between mb-4 items-center">
           <span className="text-2xl font-black uppercase text-gray-500">
-            Edit Session
+            {action} Session
           </span>
           <Button
             title={"X"}
@@ -247,4 +247,4 @@ const SessionEditForm = ({ data, setIsOpen, query }) => {
   );
 };
 
-export default SessionEditForm;
+export default SessionAdminForm;

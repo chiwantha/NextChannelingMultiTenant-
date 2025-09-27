@@ -5,6 +5,22 @@ export const GET = async (request, { params }) => {
   try {
     const { hospital_id, doctor_id } = await params;
 
+    const proflie_sql = `SELECT doctors.name, specialization.specialization 
+    FROM doctors
+    INNER JOIN specialization ON doctors.specialization_id = specialization.id
+    INNER JOIN incharge ON doctors.hospital_id = incharge.id
+    WHERE doctors.id = ?`;
+
+    const doctor_profile = await query(proflie_sql, [doctor_id]);
+    if (!doctor_profile || doctor_profile.length <= 0) {
+      return NextResponse.json(
+        {
+          error: "Doctor Not Found !",
+        },
+        { status: 404 }
+      );
+    }
+
     const sessions_sql = `
     SELECT session.id, day.day, session.start_time, session.end_time,
     session_type.name AS type, session.fee ,session.state
@@ -15,9 +31,8 @@ export const GET = async (request, { params }) => {
     WHERE doctors.id = ? AND session.hospital_id = ?
   `;
 
-    const data = await query(sessions_sql, [doctor_id, hospital_id]);
-
-    if (!data || data.length <= 0) {
+    const session_list = await query(sessions_sql, [doctor_id, hospital_id]);
+    if (!session_list || session_list.length <= 0) {
       return NextResponse.json(
         {
           error: "Session Not Found !",
@@ -28,7 +43,8 @@ export const GET = async (request, { params }) => {
 
     return NextResponse.json(
       {
-        data,
+        sessions: session_list,
+        profile: doctor_profile,
       },
       { status: 200 }
     );
@@ -45,7 +61,7 @@ export const GET = async (request, { params }) => {
   }
 };
 
-export const POST = async (request, { params }) => {
+export const POST = async (request) => {
   try {
     const body = await request.json();
     const { id, state, action } = body || "";

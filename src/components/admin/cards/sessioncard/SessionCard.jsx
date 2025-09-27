@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import SessionActions from "./actions/SessionActions";
-import SessionEditForm from "../../form/sessions/edit/SessionEditForm";
+import SessionAdminForm from "../../form/sessions/edit-new/SessionAdminForm";
 
-const SessionCard = ({ session_data, hospital_id, doctor_id }) => {
+const SessionCard = ({ session_data, query }) => {
   const [isOpen, setisOpen] = useState(false);
 
   const { id, day, start_time, end_time, type, fee, state } =
@@ -66,10 +66,7 @@ const SessionCard = ({ session_data, hospital_id, doctor_id }) => {
           {/* Session Actions */}
           <SessionActions
             session_info={session_data}
-            query={{
-              hospital_id,
-              doctor_id,
-            }}
+            query={query}
             setIsOpen={setisOpen}
             IsOpen={isOpen}
           />
@@ -77,14 +74,12 @@ const SessionCard = ({ session_data, hospital_id, doctor_id }) => {
       </div>
 
       {isOpen && (
-        <SessionEditForm
+        <SessionAdminForm
           session_id={id}
           data={session_data}
           setIsOpen={setisOpen}
-          query={{
-            hospital_id,
-            doctor_id,
-          }}
+          query={query}
+          action={`edit`}
         />
       )}
     </div>

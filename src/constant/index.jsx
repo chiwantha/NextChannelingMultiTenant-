@@ -20,7 +20,7 @@ export const ColorPallet = {
   primary_btn_hover: `hover:bg-[#0B4A9C]`,
   primary_btn_text: `text-[#FFFFFF]`,
   secondary_btn: `bg-[#4CB847]`,
-  secondary_btn_hover: `hover:bg-[#00A63E]`,
+  secondary_btn_hover: `hover:bg-[#00A63E] `,
   secondary_btn_text: `text-[#FFFFFF]`,
 };
 
