@@ -68,9 +68,8 @@ const SessionActions = ({ session_info, query, setIsOpen, IsOpen }) => {
         <div className="flex gap-2">
           <Button
             title={<MdEdit />}
-            bg={`bg-[#0460D9] hover:bg-[#0B4A9C] text-white px-2 py-1
-                 rounded-lg  text-xl
-                 ${pending.edit && `animate-pulse cursor-not-allowed`}`}
+            bg={`bg-[#0460D9] hover:bg-[#0B4A9C] text-white 
+                 rounded-lg  text-xl`}
             pd={`px-2 py-2`}
             disabled={IsOpen}
             click={() => {
@@ -79,9 +78,8 @@ const SessionActions = ({ session_info, query, setIsOpen, IsOpen }) => {
           />
           <Button
             title={<HiBoltSlash />}
-            bg={`bg-orange-500 text-white px-2 py-1 hover:bg-orange-600
-                 rounded-lg  text-xl
-                 ${pending.deactivate && `animate-pulse cursor-not-allowed`}`}
+            bg={`bg-orange-500 text-white hover:bg-orange-600
+                 rounded-lg  text-xl`}
             pd={`px-2 py-2`}
             click={() => {
               handleState(`deactivate`, 0);
@@ -93,9 +91,8 @@ const SessionActions = ({ session_info, query, setIsOpen, IsOpen }) => {
         <div className="flex gap-2">
           <Button
             title={<HiBolt />}
-            bg={`bg-green-500 text-white px-2 py-1 hover:bg-green-600
-                rounded-lg  text-xl 
-                ${pending.activate && `animate-pulse cursor-not-allowed`}`}
+            bg={`bg-green-500 text-white  hover:bg-green-600
+                rounded-lg  text-xl `}
             pd={`px-2 py-2`}
             click={() => {
               handleState(`activate`, 1);
@@ -104,9 +101,8 @@ const SessionActions = ({ session_info, query, setIsOpen, IsOpen }) => {
           />
           <Button
             title={<MdDelete />}
-            bg={`bg-red-500 text-white px-2 py-1 hover:bg-red-600
-                rounded-lg  text-xl
-                ${pending.delete && `animate-pulse cursor-not-allowed`}`}
+            bg={`bg-red-500 text-white  hover:bg-red-600
+                rounded-lg  text-xl`}
             pd={`px-2 py-2`}
             click={() => {
               handleState(`delete`, 0);

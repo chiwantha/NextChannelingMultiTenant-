@@ -76,7 +76,17 @@ const SessionCard = ({ session_data, hospital_id, doctor_id }) => {
         </div>
       </div>
 
-      {isOpen && <SessionEditForm session_id={id} setIsOpen={setisOpen} />}
+      {isOpen && (
+        <SessionEditForm
+          session_id={id}
+          data={session_data}
+          setIsOpen={setisOpen}
+          query={{
+            hospital_id,
+            doctor_id,
+          }}
+        />
+      )}
     </div>
   );
 };
